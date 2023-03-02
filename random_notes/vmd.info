@@ -1,0 +1,29 @@
+### How to rotate a structure in VMD ###
+(http://www.ks.uiuc.edu/Research/vmd/mailing_list/vmd-l/21427.html):
+
+set sel [atomselect top "resid 10"] set com [measure center $sel weight mass] set matrix [transaxis z 45]
+$sel moveby [vecscale -1.0 $com] $sel move $matrix $sel moveby $com
+Here they rotate around Z axis.
+
+### Removing solvent water molecules within an ice crystal - this happens when the ice crystal is added to a large box, which is subsequently solvated #
+not ((same residue as (within 3.0 of resname ssl)) and resname SOL)---> or a variation thereof
+not ((same residue as (within 3.0 of resname PVA)) and not resname PVA)
+
+
+
+### other random useful commands ###
+pbc box -style tubes -width 0.5 -color purple
+
+name OW and z < 313 and within 10 of resname pva
+
+same residue as (name OW and (within 10 of resname pva)and z < 308) and not resname pva
+
+$sel moveby {0 0 10}
+
+
+cutting slab
+$sel moveby { -24.733181 -7.770000 -0.910603 }
+not (same residue as (y < 4.62 or y > 12.78 or z < 2.20 or z > 10.77 or x < -3.7 or x > 1.46))
+set sel [atomselect top "all"] (edited) 
+pbc set { 4.50 7.33 7.80 }
+

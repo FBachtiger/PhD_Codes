@@ -1,0 +1,8 @@
+These are prep files which I used as part of the larger HIN machinery.
+* prep_clusters.sh ->outputs the idx.dat file which contains all the indexes of icy OWs in the format required for the modules writen in the HIN program
+
+* visualise_nuclei.tcl -> to be used with VMD, load VMD then in TCL console 'source visualise_nuclei.tcl' this will allow you to color and visualise the icy OWs
+
+* coloring.f90 is a fortran  program which preps a colorfile to be used in conjuction with VMD, see above.
+
+* vmd.info contains some useful commands I used throughout my PhD
