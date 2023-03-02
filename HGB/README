@@ -1,0 +1,23 @@
+Doglycans will need to be installed, see
+https://pubs.acs.org/doi/10.1021/acs.jcim.7b00237 and download the SI directory for further information.
+
+1.
+Open seqfile.seq and define type of polymer, chain length and the glycosidic torsional angle. In this example we are looking at a 1,4-alpha-Gal monomer, with a total of 8 monomers making up the chain. The torsional angles are 85 and 140 degrees. 
+
+2.
+In doglycans.sh set the 'cl' (chain length) so as to match what is set in seqfile.seq. Note, you will need to ammend the 'dg_path' to reflect your own. Once you've run it you will get 3 output files, in this case file names starting with '8HGB' with various extensions.
+
+3.
+Next, in pdb2gmx.sh set the 'cl' again to reflect the chain length, at the top there is a description of what the script does. Select '1' CHARMM36 all-atom force field (March 2017). Output is a conf.pdb structure file containing a fully protonated HGB chain.
+
+4.
+Next, in selective_HO5.sh under 'atoms_to_remove' enter which residues in the chain you wish to deprotonate at the carboxyl site e.g. enter 1, 4, 8 if you wish to remove the hydrogen (HO5) for the 1st, 4th and 8th residue in the chain. You also have to remove those hydrogens if you wish to replace them with a -OCH3 group. If you want to keep the chain fully protonated leave it blank. Then run script and choose'2' CHARMM36 all-atom force field (November 2018). You are ready to go if you don't want to add any -OCH3 groups, output is a conf.pdb and topol.top file.
+
+5.
+If you want to replaced the deprotonated sites (e.g. 1,4,8) with -OCH3:
+* cp conf.pdb from step 4 to Methylate_pdb/ADD_METH folder
+* add_meth.sh -> methylate residues, output is a plus.pdb and follow instructions (ignore the bit about adding the H and type 0)
+* cp the output plus.pdb back to working directory
+* run move_meth.sh - output is a pdb and topology (select nov FF), make sure you specify in script which residues have been methylated (x) eg: x=1 4 8  and the chain legnth of HGB (CL) eg:CL=8  -> ready to go
+
+
