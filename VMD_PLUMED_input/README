@@ -1,0 +1,10 @@
+This script is useful when looking at ice growth in the +/- z direction for example in a slab geometry. 
+The way the HIN_Plumed is set up is that it looks at the largest cluster in the system, if you have a slab growing in both directions and you want to seperately investigate the +/-z directions you need to tell plumed to do this by dividing the slab into two. I.e. look at all the water molecules starting from a z coordinate and above (+z) and feed those into the plumed input file, and seperately do the same in the -z direction.
+
+To do this:
+1. Get your structure file and open vmd and determine the z cut off in both directions
+2. Add these cut-offs in the print_list.tcl scrip under 'set no_bottom [ atomselect top "name OW and z>362" ]' e.g. here you are saying give me all the OW indices in the +z direction starting from z coordinate 362.
+3. Then run  it 'vmd -dispdev none -e print_list.tcl' the output is a file 'list.txt' with all the OW indices 
+4. Run plumed_prep.sh this will concatenate the different bits you need for the plumed.dat input file, ie from the list.txt file it finds the corresponding HW1 and HW2 indices and merges the files OW, HW1, HW2 and the other plumed parameters into one file ->plumed.dat
+5. Now for this to be read correctly you need to make sure there are no line breaks,currently there are 4 so find each line break and merge the whole thing under one very long 'paragraph'
+6.Ready to go 
