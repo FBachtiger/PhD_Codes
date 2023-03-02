@@ -2,4 +2,3 @@ This Repo contains the following - each folder has a detailed explanation of wha
 1. HGB -> folder with all the code necessary to create any length HGA chain, either (de)protonated at the C6 site or methyl-esterified
 2. VMD_PLUMED_input -> outputs a plumed.dat file which is used in conjuction with the Pumed_HIN code.  
 3. Random notes 
-#4. HIN_modules -> a slimed down version of Gabriele's HIN code, containing all the modules I wrote over the years
